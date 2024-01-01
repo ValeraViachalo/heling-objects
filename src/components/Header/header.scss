@@ -1,0 +1,63 @@
+@import "../../styles/global.scss"
+;
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 2vw;
+  position: fixed;
+  mix-blend-mode: difference;
+  color: $c-white-secondary;
+  right: 1vw;
+  left: 1vw;
+  top: 1vw;
+  z-index: 10;
+}
+
+.navigation {
+  position: relative;
+  left: 6vw;
+
+  &__button {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 21;
+
+    &_slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .el {
+        width: 100%;
+        height: 100%;
+        @extend %link;
+
+        .perspectiveText {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: auto;
+          width: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+
+          p {
+            transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+            pointer-events: none;
+            text-transform: uppercase;
+
+            &:nth-of-type(2) {
+              position: absolute;
+              transform-origin: bottom center;
+              transform: rotateX(-90deg) translateY(9px);
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

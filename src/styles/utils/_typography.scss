@@ -1,0 +1,33 @@
+.big-text {
+  font-family: FormulaCondensed, sans-serif;
+  font-size: 12vw;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+%body-text {
+  font-family: RightGrotesk, sans-serif;
+  font-size: 1.5vw;
+  letter-spacing: 0.1vw;
+  font-style: normal;
+  font-weight: lighter;
+}
+
+%link {
+  font-family: FormulaCondensed, sans-serif;
+  font-size: 2vw;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+a {
+  @extend %link;
+}
+
+body {
+  @extend %body-text;
+}
