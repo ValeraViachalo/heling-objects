@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../../helpers/getProducts";
 import { Footer } from "../../components/Footer/Footer";
 
+import './home.scss';
+
 export const Home = () => {
   const [products, setProducts] = useState([]);
 
@@ -15,6 +17,7 @@ export const Home = () => {
   return (
     <motion.section
       {...motionParametr()}
+      className="home"
     >
       {products.map((product, index) => (
         <ProductCard

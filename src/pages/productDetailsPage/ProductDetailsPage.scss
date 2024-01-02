@@ -1,10 +1,20 @@
+@import "../../styles/global.scss";
+
 .product-details {
   &__top {
     display: flex;
     justify-content: space-between;
-    margin-left: 2vw;
+    margin: 4vw 0 0 2vw;
     position: relative;
     height: 90svh;
+
+    @include mq() {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0;
+      margin: 8vw 0 0 4vw;
+      height: 100svh;
+    }
   }
 
   &__main-image {
@@ -13,6 +23,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    @include mq() {
+      position: absolute;
+      top: 23%;
+      width: 92vw;
+      height: 70svh;
+      z-index: 1;
+    }
   }
 
   &__image {
@@ -20,12 +38,23 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 2;
     
     &-1 {
       width: 14vw;
       height: 18vw;
       top: 11vw;
       left: 8vw;
+      
+      @include mq() {
+        opacity: 0.7;
+        top: auto;
+        left: auto;
+        bottom: 0;
+        right: 8%;
+        width: 44vw;
+        height: 58vw;
+      }
     }
     
     &-2 {
@@ -33,6 +62,12 @@
       height: 23vw;
       top: 17vw;
       left: 34vw;
+
+      @include mq() {
+        display: none;
+        width: 24vw;
+        height: 38vw;
+      }
     }
   }
 
@@ -42,8 +77,17 @@
     margin: 4vw 2vw;
     gap: 5vw;
 
+    @include mq() {
+      flex-direction: column;
+      margin: 4vw 12vw 4vw 4vw;
+    }
+
     & > p {
       width: 43%;
+
+      @include mq() {
+        width: 100%;
+      }
     }
   }
 }

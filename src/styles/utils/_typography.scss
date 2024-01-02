@@ -1,3 +1,5 @@
+@import "./mixins";
+
 .big-text {
   font-family: FormulaCondensed, sans-serif;
   font-size: 12vw;
@@ -5,6 +7,12 @@
   font-weight: bold;
   line-height: normal;
   text-transform: uppercase;
+  text-wrap: nowrap;
+  line-height: 110%;
+
+  @include mq($laptop) {
+    font-size: 24vw;
+  }
 }
 
 %body-text {
@@ -13,6 +21,10 @@
   letter-spacing: 0.1vw;
   font-style: normal;
   font-weight: lighter;
+
+  @include mq() {
+    font-size: 4vw;
+  }
 }
 
 %link {
@@ -22,6 +34,11 @@
   font-weight: bold;
   line-height: normal;
   text-transform: uppercase;
+  
+  @include mq($laptop) {
+    font-size: 6vw;
+  }
+
 }
 
 a {

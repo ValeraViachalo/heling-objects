@@ -1,5 +1,5 @@
-export const URL = "https://heling-objects.vercel.app/products/products.json";
-export const URL_DETAILS = "https://heling-objects.vercel.app/products/productDetails/";
+export const URL = "/products/products.json";
+export const URL_DETAILS = "/products/productDetails/";
 
 export function getProducts() {
   return fetch(URL)

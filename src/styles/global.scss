@@ -1,6 +1,7 @@
 @import "./utils/fonts";
 @import "./utils/typography";
 @import "./utils/variables";
+@import "./utils/mixins";
 
 body {
   margin: 0;
@@ -15,7 +16,6 @@ body {
 
 .app {
   &__section {
-    margin-top: 4vw;
     overflow: hidden;
   }
 }

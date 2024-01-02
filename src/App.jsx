@@ -44,11 +44,11 @@ function App() {
     const lenis = new Lenis({
       duration: 0.6,
       easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net/en#easeOutExpo
-      direction: "vertical", // vertical, horizontal
-      gestureDirection: "vertical", // vertical, horizontal, both
+      direction: "vertical",
+      gestureDirection: "vertical",
       smooth: true,
       smoothTouch: false,
-      touchMultiplier: 2,
+      touchMultiplier: 3,
       inifinite: false
     });
 

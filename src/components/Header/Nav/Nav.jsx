@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { isBrowser, isMobile } from "react-device-detect";
+import classNames from "classnames";
 
 import { height, opacity } from "../../../helpers/anim";
 import "./Nav.scss";
-import classNames from "classnames";
-import { getNavigationLinks } from "../../../helpers/getProducts";
+import { getNavigationLinks, getProductsDetails } from "../../../helpers/getProducts";
 
 function handleClasses(path, href) {
   return classNames({
@@ -15,14 +16,35 @@ function handleClasses(path, href) {
 
 export const Nav = ({ isActive, setIsActive }) => {
   const [links, setLinks] = useState(null);
+  const [product, setProduct] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+
+  const isDesktop = !isMobile || isBrowser;
   
   const location = useLocation();
   const { pathname } = location;
   const productName = pathname.split('/')[2];
 
+  const handleImage = () => {
+    if(!hoveredProduct && product && !isDesktop) {
+      return product.mainPhoto;
+    }
+
+    return `/${hoveredProduct}`;
+  }
+
+  const setterImages = (image) => {
+    // onMouseEnter={() => isTouchDevice ? null : setHoveredProduct(curLink.photo)}
+    if(isDesktop) {
+      setHoveredProduct(image)
+    }
+  }
+
   useEffect(() => {
     getNavigationLinks().then(setLinks);
+    if(productName) {
+      getProductsDetails(productName).then(setProduct);
+    }
   }, [])
   
   return (
@@ -52,8 +74,8 @@ export const Nav = ({ isActive, setIsActive }) => {
               onClick={() => {
                 setIsActive(!isActive);
               }}
-              onMouseEnter={() => setHoveredProduct(curLink.photo)}
-              onMouseLeave={() => setHoveredProduct(null)}
+              onMouseEnter={() => setterImages(curLink.photo)}
+              onMouseLeave={() => setterImages(null)}
               className={`nav__link ${handleClasses(productName, curLink.title)}`}
             >
               {curLink.title}
@@ -66,11 +88,11 @@ export const Nav = ({ isActive, setIsActive }) => {
           <AnimatePresence mode="wait">
             <motion.div
               className="nav__image"
-              variants={opacity}
+              variants={opacity(product)}
               key={hoveredProduct}
-              initial="initial"
+              initial={"initial"}
               animate={hoveredProduct ? "open" : "closed"}
-              style={{ backgroundImage: `url(/${hoveredProduct})` }}
+              style={{ backgroundImage: `url(${handleImage()})` }}
             />
           </AnimatePresence>
         </div>

@@ -13,10 +13,10 @@ export const ProductCard = ({ title, link, image, id }) => {
   useEffect(() => {
     gsap.timeline({
       scrollTrigger: {
-        trigger: `#product-card__link-${id}`,
-        start: 'top top',
+        trigger: `#product-card-${id}`,
+        start: 'top center',
         end: 'bottom top',
-        scrub: 0.2
+        scrub: 0.2,
       }
     })
     .to(`#product-card__title-${id}`, {
@@ -25,8 +25,8 @@ export const ProductCard = ({ title, link, image, id }) => {
   }, [])
 
   return (
-    <div className="product-card">
-      <Link to={`products/${link}/`} className={`product-card__link`} id={`product-card__link-${id}`}>
+    <div className="product-card" id={`product-card-${id}`}>
+      <Link to={`products/${link}/`} className={`product-card__link`} >
         <div
           className="product-card__main-image" 
           style={{ backgroundImage: `url(${image})` }}
