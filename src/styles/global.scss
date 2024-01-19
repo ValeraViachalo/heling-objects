@@ -1,6 +1,7 @@
 @import "./utils/fonts";
 @import "./utils/typography";
 @import "./utils/variables";
+@import "./utils/mixins";
 
 body {
   margin: 0;
@@ -15,30 +16,6 @@ body {
 
 .app {
   &__section {
-    margin-top: 4vw;
     overflow: hidden;
   }
-}
-
-.scrollbar {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 10;
-  mix-blend-mode: difference;
-}
-
-.scrollbar .inner {
-  height: 100%;
-  position: relative;
-}
-
-.scrollbar .thumb {
-  min-height: 48px;
-  width: 8px;
-  background-color: #b59e82;
-  position: absolute;
-  right: 4px;
-  opacity: 0;
 }

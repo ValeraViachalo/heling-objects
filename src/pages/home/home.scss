@@ -1,0 +1,7 @@
+@import "../../styles/global.scss";
+
+.home {
+  @include mq($laptop, '>') {
+    margin-top: 4vw;
+  }
+}

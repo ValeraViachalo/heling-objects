@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { motionParametr } from "../../helpers/motionParametr";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getProducts } from "../../helpers/getProducts";
 import { Footer } from "../../components/Footer/Footer";
+
+import "./home.scss";
+import client from "../../helpers/client";
+import gsap from "gsap";
+import { Observer, ScrollToPlugin, ScrollTrigger } from "gsap/all";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
@@ -15,18 +20,19 @@ export const Home = () => {
   return (
     <motion.section
       {...motionParametr()}
+      className="home"
     >
-      {products.map((product, index) => (
-        <ProductCard
-          key={index}
-          id={index}
-          title={product.name}
-          image={product.mainPhoto}
-          link={product.link}
-        />
-      ))}
-      
+        {products.map((product, index) => (
+          <ProductCard
+            key={index}
+            id={index}
+            title={product.name}
+            image={product.mainImage.asset.url}
+            link={product.slug.current}
+          />
+        ))}
+
       <Footer />
     </motion.section>
-  )
+  );
 };

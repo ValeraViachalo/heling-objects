@@ -15,7 +15,9 @@ export const ProductDetailsPage = () => {
 
 
   useEffect(() => {
-    getProductsDetails(productName).then(setProductDetails);
+    getProductsDetails(productName).then((p) =>  {
+      setProductDetails(p[0]);
+    });
   }, [])
 
   return (
@@ -33,15 +35,15 @@ export const ProductDetailsPage = () => {
               {productDetails.category}
             </h2>
             <div
-              style={{ backgroundImage: `url(${productDetails.firstImage})` }}
+              style={{ backgroundImage: `url(${productDetails.thirdImage.asset.url})` }}
               className="product-details__image product-details__image-1"
             />
             <div
-              style={{ backgroundImage: `url(${productDetails.secondImage})` }}
+              style={{ backgroundImage: `url(${productDetails.secondaryImage.asset.url})` }}
               className="product-details__image product-details__image-2"
             />
             <div
-              style={{ backgroundImage: `url(${productDetails.mainPhoto})` }}
+              style={{ backgroundImage: `url(${productDetails.mainImage.asset.url})` }}
               className="product-details__main-image"
             />
           </div>
@@ -50,7 +52,7 @@ export const ProductDetailsPage = () => {
               {productDetails.author}
             </p>
             <p>
-             {productDetails.aboutProduct}
+              {productDetails.aboutProduct}
             </p>
           </div>
         </>

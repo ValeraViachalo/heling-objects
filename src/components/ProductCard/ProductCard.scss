@@ -7,13 +7,18 @@
 
   &__link {
     display: block;
-    width: 30vw;
-    height: 80svh;
+    width: 40vw;
+    height: 45vw;
 
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
     overflow: hidden;
+
+    @include mq($laptop) {
+      width: 100vw;
+      height: 100lvh;
+    }
   }
 
   &__main-image {
@@ -23,21 +28,31 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
     
     &:hover {
-      transform: scale(1.1);
+      @include mq($tablet, '>') {
+        transform: scale(1.1);
+      }
     }
   }
 
   &__title {
     position: absolute;
-    left: 40%;
+    left: 35%;
     bottom: -10%;
     transform: translate(-50%, -50%);
     mix-blend-mode: difference;
     z-index: 2;
-    color: $c-white-secondary;
+    color: #655f57;
+    
+    @include mq($laptop) {
+      transform: translate(-50%, -50%);
+      left: 50%;
+      bottom: 20%;
+      max-width: 80vw;
+      color: $c-white-secondary
+    }
   }
 }
 

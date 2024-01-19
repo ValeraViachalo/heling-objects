@@ -49,6 +49,10 @@ const animate = () => {
       xPercent: `+=${xForce * 0.5}`,
       yPercent: `+=${yForce * 0.5}`,
     });
+    gsap.set(childrenArray.slice(6,9), {
+      xPercent: `+=${xForce * 0.7}`,
+      yPercent: `+=${yForce * 0.7}`,
+    });
   }
   // gsap.set(plane3.current, {
   //   x: `+=${xForce * 0.25}`,
@@ -77,25 +81,25 @@ const animate = () => {
       <div ref={plane1} className="plane">
         {products.map((currProduct, index) => (
           <Link 
-            to={`/products/${currProduct.link}/`}
+            to={`/products/${currProduct.slug.current}/`}
             key={index}
             className="plane__image-wrapper"
           >
-            <div style={{ backgroundImage: `url(/${currProduct.mainPhoto})` }} className="plane__image"/>
+            <div style={{ backgroundImage: `url(${currProduct.mainImage.asset.url})` }} className="plane__image"/>
           </Link>
         ))}
       </div>
 
       <div className="error-page__text">
         <h1 className="error-page__text-title">
-          Looks like you lost,
+          Looks like you're lost,
         </h1>
         <p className="error-page__text-main">
           So let's just go
           &nbsp;
           <Link
             to="/"
-            className="error-page__text-main"
+            className="error-page__text-main link"
           >
             Home
           </Link>

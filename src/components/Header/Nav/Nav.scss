@@ -15,22 +15,55 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @include mq() {
+      justify-content: center;
+    }
   }
   .container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     max-height: 92svh;
+    transition: all 0.3s ease;
+
+    @include mq() {
+      align-items: center;
+      justify-content: center;
+      width: 80vw;
+      height: max(100svh, 660px);
+      text-align: center;
+      z-index: 10;
+      mix-blend-mode: difference;
+      color: $c-white-secondary;
+    }
+
+    &:hover {
+      .nav__link {
+        @include mq($tablet, '>') {
+          filter: blur(0.2vw);
+        }
+      }
+    }
   }
   &__link {
     font-size: 4vw;
     transition: all 0.5s ease;
     width: 19vw;
     padding: 2vw 0;
+    text-wrap: nowrap;
+
+    @include mq() {
+      font-size: 12vw;
+      width: max-content;
+    }
+
+    @include mq($tablet) {
+      font-size: 10vw;
+    }
     
     &--active {
       color: $red-primary;
-      filter: blur(0.2vw);
       
       &:hover {
         letter-spacing: 0vw !important;
@@ -38,7 +71,10 @@
     }
 
     &:hover {
-      letter-spacing: 0.4vw;
+      @include mq($tablet, '>') {
+        filter: blur(0) !important;
+        letter-spacing: 0.4vw;
+      }
     }
   }
 
@@ -48,5 +84,16 @@
     width: 34vw;
     background: no-repeat center;
     background-size: cover;
+
+    @include mq() {
+      position: absolute;
+      // top: -2%;
+      // bottom: -2%;
+      // left: -2%;
+      inset: -6%;
+      height: 120svh;
+      width: 120vw;
+      filter: blur(4vw) brightness(0.5) !important;
+    }
   }
 }

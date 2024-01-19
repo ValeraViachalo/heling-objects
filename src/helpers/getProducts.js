@@ -1,32 +1,55 @@
-export const URL = "https://heling-objects.vercel.app/products/products.json";
-export const URL_DETAILS = "https://heling-objects.vercel.app/products/productDetails/";
+import client from "./client";
 
 export function getProducts() {
-  return fetch(URL)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-  })
-  .then(products => products);
-}
-
-export function getNavigationLinks() {
-  return fetch(URL)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-  })
-  .then(products => products.map(product => ({title: product.name, photo: product.mainPhoto})));
+  return client
+    .fetch(
+      `*[_type == "products"] {
+      name,
+      slug,
+      mainImage {
+        asset -> {
+          _id,
+          url
+        },
+      }
+  }`
+    )
+    .then((products) => {
+      return products;
+    });
 }
 
 export function getProductsDetails(product) {
-  return fetch(`${URL_DETAILS}${product}.json`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then(productDetails => productDetails);
+  return client
+    .fetch(
+      `*[slug.current == "${product}"] {
+      name,
+      category,
+      author,
+      aboutProduct,
+      mainImage {
+        asset -> {
+          _id,
+          url
+        },
+      },
+      secondaryImage {
+        asset -> {
+          _id,
+          url
+        },
+      },
+      thirdImage {
+        asset -> {
+          _id,
+          url
+        },
+      },
+  }`
+    )
+    .then((products) => {
+      console.log(products);
+
+      return products;
+    });
 }
