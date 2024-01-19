@@ -6,6 +6,7 @@ import { motionParametr } from "../../helpers/motionParametr";
 import { useEffect, useState } from "react";
 import { getProductsDetails } from "../../helpers/getProducts";
 import { Footer } from "../../components/Footer/Footer";
+import { useDocumentTitle } from "../../components/documentTitle/documentTitle";
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -18,7 +19,9 @@ export const ProductDetailsPage = () => {
     getProductsDetails(productName).then((p) =>  {
       setProductDetails(p[0]);
     });
-  }, [])
+  }, [productName])
+  
+  useDocumentTitle(productDetails ?`${productDetails.name} - HELING OBJECTS`: document.title);
 
   return (
     <motion.section

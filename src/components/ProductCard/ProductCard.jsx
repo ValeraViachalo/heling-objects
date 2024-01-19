@@ -16,19 +16,21 @@ export const ProductCard = ({ title, link, image, id }) => {
         trigger: `#product-card-${id}`,
         start: 'top center',
         end: 'bottom top',
-        scrub: 0.2,
+        scrub: true,
       }
     })
     .to(`#product-card__title-${id}`, {
       yPercent: gsap.utils.random(-150, -100),
-    })
+    });
+
   }, [])
 
   return (
     <div className="product-card" id={`product-card-${id}`}>
       <Link to={`products/${link}/`} className={`product-card__link`} >
         <div
-          className="product-card__main-image" 
+          className="product-card__main-image"
+          id={`card-image-${id}`}
           style={{ backgroundImage: `url(${image})` }}
         />
       </Link>

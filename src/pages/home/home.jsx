@@ -6,10 +6,12 @@ import { getProducts } from "../../helpers/getProducts";
 import { Footer } from "../../components/Footer/Footer";
 
 import './home.scss';
+import { useDocumentTitle } from "../../components/documentTitle/documentTitle";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
 
+  useDocumentTitle('HELING OBJECTS')
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);
