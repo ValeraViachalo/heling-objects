@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 import { height, opacity } from "../../../helpers/anim";
 import "./Nav.scss";
-import { getNavigationLinks, getProducts, getProductsDetails } from "../../../helpers/getProducts";
+import { getProducts, getProductsDetails } from "../../../helpers/getProducts";
 
 function handleClasses(path, href) {
   return classNames({

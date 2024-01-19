@@ -5,10 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { getProducts } from "../../helpers/getProducts";
 import { Footer } from "../../components/Footer/Footer";
 
-import "./home.scss";
-import client from "../../helpers/client";
-import gsap from "gsap";
-import { Observer, ScrollToPlugin, ScrollTrigger } from "gsap/all";
+import './home.scss';
 
 export const Home = () => {
   const [products, setProducts] = useState([]);

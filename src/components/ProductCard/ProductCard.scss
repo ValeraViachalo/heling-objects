@@ -45,6 +45,7 @@
     mix-blend-mode: difference;
     z-index: 2;
     color: #655f57;
+
     
     @include mq($laptop) {
       transform: translate(-50%, -50%);
