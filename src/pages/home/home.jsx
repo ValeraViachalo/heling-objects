@@ -11,7 +11,8 @@ import { useDocumentTitle } from "../../components/documentTitle/documentTitle";
 export const Home = () => {
   const [products, setProducts] = useState([]);
 
-  useDocumentTitle('HELING OBJECTS')
+  useDocumentTitle('HELING OBJECTS');
+  
   useEffect(() => {
     getProducts().then(setProducts);
   }, []);

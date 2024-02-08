@@ -24,6 +24,7 @@ export function getProductsDetails(product) {
     .fetch(
       `*[slug.current == "${product}"] {
       name,
+      slug,
       category,
       author,
       aboutProduct,
@@ -48,8 +49,6 @@ export function getProductsDetails(product) {
   }`
     )
     .then((products) => {
-      console.log(products);
-
       return products;
     });
 }

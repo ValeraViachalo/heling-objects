@@ -6,7 +6,6 @@
 body {
   margin: 0;
   background-color: $green-primary;
-  scrollbar-width: none !important;
 
   &::-webkit-scrollbar {
     width: 0 !important;

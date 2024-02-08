@@ -11,7 +11,7 @@
     font-weight: bold;
     position: absolute;
     mix-blend-mode: difference;
-    color: $c-white-secondary;
+    color: $c-black;
     z-index: 8;
     top: 50%;
     left: 50%;
@@ -28,6 +28,8 @@
 
       .link {
         transition: all 0.3s ease;
+        position: relative;
+        z-index: 100;
         &:hover {
           color: #e1c2c2;
         }
@@ -39,7 +41,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     filter: grayscale(0.2);
 
     &__image-wrapper {

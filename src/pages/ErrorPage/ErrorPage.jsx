@@ -95,7 +95,7 @@ const animate = () => {
           Looks like you're lost,
         </h1>
         <p className="error-page__text-main">
-          So let's just go
+          So let's choose one, or go
           &nbsp;
           <Link
             to="/"
