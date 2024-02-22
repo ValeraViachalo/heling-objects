@@ -10,8 +10,6 @@ import './ErrorPage.scss';
 export const ErrorPage = () => {
   const [products, setProducts] = useState([]);
   const plane1 = useRef(null);
-  const plane2 = useRef(null);
-  const plane3 = useRef(null);
   let requestAnimationFrameId = null;
   let xForce = 0;
   let yForce = 0;

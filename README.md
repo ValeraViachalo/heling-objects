@@ -21,7 +21,9 @@
 ```
 #### }
 
-<br/>
-
 ## PS: 404 page deserves you to get lost and try)
 ![404](public/404page.gif)
+
+<br/>
+
+![alt text](public/LogoForReadMe.svg)
