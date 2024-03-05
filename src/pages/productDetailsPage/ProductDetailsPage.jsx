@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import "./ProductDetailsPage.scss";
 import { motionParametr } from "../../helpers/motionParametr";
 import { useEffect, useState } from "react";
 import { getProducts, getProductsDetails } from "../../helpers/getProducts";
-import { Footer } from "../../components/Footer/Footer";
 import { useDocumentTitle } from "../../components/documentTitle/documentTitle";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 
 function getLinkToNextProduct(products, productDetails) {
   let foundCurrentProduct = false;
@@ -35,9 +32,12 @@ export const ProductDetailsPage = () => {
   const [products, setProducts] = useState([]);
   const [nextProduct, setNextProduct] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleToNextPage = () => {
     if(productDetails && nextProduct) {
-      console.log(`goto ${nextProduct}`);
+      navigate(`/products/${nextProduct}/`);
+      console.log(nextProduct);
     }
   }
 
@@ -48,21 +48,24 @@ export const ProductDetailsPage = () => {
     getProducts().then(setProducts);
   }, [productName]);
   
-  useEffect(() => {
-    if(products && productDetails) {
-      setNextProduct(getLinkToNextProduct(products, productDetails))
-      gsap.registerPlugin(ScrollTrigger);
+  // useGSAP(() => {
+  //   window.scrollTo(0, 0);
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '.link-to-next',
-        start: 'bottom bottom',
-        end: 'bottom bottom',
-        onEnter: () => handleToNextPage(),
-      }
-    })
-    }
-  }, [products, productDetails, productDetails])
+  //   if(products && productDetails) {
+  //     setNextProduct(getLinkToNextProduct(products, productDetails))
+  //     gsap.registerPlugin(ScrollTrigger);
+
+  //   gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: '.link-to-next',
+  //       start: 'bottom bottom',
+  //       end: 'bottom bottom',
+  //       onEnter: () => handleToNextPage(),
+  //       markers: 1
+  //     }
+  //   })
+  //   }
+  // }, [products, productDetails, location])
 
   useDocumentTitle(
     productDetails ? `${productDetails.name} - HELING OBJECTS` : document.title

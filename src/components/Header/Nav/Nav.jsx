@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { isBrowser, isMobile } from "react-device-detect";
 import classNames from "classnames";
 
@@ -8,46 +8,40 @@ import { height, opacity } from "../../../helpers/anim";
 import "./Nav.scss";
 import { getProducts, getProductsDetails } from "../../../helpers/getProducts";
 
-function handleClasses(path, href) {
-  return classNames({
-    'nav__link--active': (path === href)
-  });
-}
-
 export const Nav = ({ isActive, setIsActive }) => {
   const [links, setLinks] = useState(null);
   const [product, setProduct] = useState(null);
   const [hoveredProduct, setHoveredProduct] = useState(null);
 
   const isDesktop = !isMobile || isBrowser;
-  
+
   const location = useLocation();
   const { pathname } = location;
-  const productName = pathname.split('/')[2];
+  const productName = pathname.split("/")[2];
 
   const handleImage = () => {
-    if(product && !hoveredProduct) {
+    if (product && !hoveredProduct) {
       return product[0].mainImage.asset.url;
     }
 
     return hoveredProduct;
-  }
+  };
 
   const setterImages = (image) => {
-    if(isDesktop) {
-      setHoveredProduct(image)
+    if (isDesktop) {
+      setHoveredProduct(image);
     }
-  }
+  };
 
   useEffect(() => {
     getProducts().then(setLinks);
-    
-    if(productName) {
+
+    if (productName) {
       getProductsDetails(productName).then(setProduct);
       // setHoveredProduct(product.mainImage.asset.url)
     }
-  }, [])
-  
+  }, []);
+
   return (
     <motion.div
       className="nav"
@@ -58,31 +52,27 @@ export const Nav = ({ isActive, setIsActive }) => {
     >
       <div className="nav__content">
         <div className="container">
-          <Link
-              to="/"
-              onClick={() => {
-                setIsActive(!isActive);
-              }}
-              className={`nav__link ${handleClasses(pathname, '/')}`}
-            >
-              Home
-            </Link>
-          {links && links.map((curLink, index) => (
-            <>
-            <Link
-              key={`l${index}`}
-              to={`products/${curLink.slug.current}/`}
-              onClick={() => {
-                setIsActive(!isActive);
-              }}
-              onMouseEnter={() => setterImages(curLink.mainImage.asset.url)}
-              onMouseLeave={() => setterImages(null)}
-              className={`nav__link ${handleClasses(productName, curLink.slug.current)}`}
-            >
-              {curLink.name}
-            </Link>
-          </>
-          ))}
+          {links &&
+            links.slice(0, 8).map((curLink, index) => (
+              <>
+                <NavLink
+                  key={`l${index}`}
+                  to={`product/${curLink.slug.current}/`}
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                  onMouseEnter={() => setterImages(curLink.mainImage.asset.url)}
+                  onMouseLeave={() => setterImages(null)}
+                  className={({ isActive }) =>
+                    classNames(`nav__link`, {
+                      "nav__link--active": isActive,
+                    })
+                  }
+                >
+                  {curLink.name}
+                </NavLink>
+              </>
+            ))}
         </div>
 
         <div className="nav__image-wrapper">

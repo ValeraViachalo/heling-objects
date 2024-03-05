@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@gsap/react": "^2.1.0",
     "@sanity/client": "^6.11.1",
     "@studio-freight/lenis": "^1.0.33",
     "@testing-library/jest-dom": "^5.17.0",

@@ -79,7 +79,7 @@ const animate = () => {
       <div ref={plane1} className="plane">
         {products.map((currProduct, index) => (
           <Link 
-            to={`/products/${currProduct.slug.current}/`}
+            to={`/product/${currProduct.slug.current}/`}
             key={index}
             className="plane__image-wrapper"
           >

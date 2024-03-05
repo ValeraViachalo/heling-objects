@@ -1,18 +1,46 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import "./header.scss";
 import { Nav } from "./Nav/Nav";
+import classNames from "classnames";
 
-export const Header = ({isActive, setIsActive}) => {
+export const Header = ({ isActive, setIsActive }) => {
   // const [isActive, setIsActive] = useState(false);
 
   return (
     <header className="header">
-      <span style={{ width: "1vw" }}/>
+      <div className="navigation__list">
+        <NavLink
+          to="/"
+          onClick={() => {
+            setIsActive(false);
+          }}
+          className={({ isActive }) =>
+            classNames(`header__link`, "body-text-2", {
+              "header__link--active": isActive,
+            })
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/products"
+          onClick={() => {
+            setIsActive(false);
+          }}
+          className={({ isActive }) =>
+            classNames(`header__link`, "body-text-2", {
+              "header__link--active": isActive,
+            })
+          }
+        >
+          Products
+        </NavLink>
+      </div>
 
-      <Link to="/" className="header__logo">
+      <Link to="/" className="header__logo body-text-2">
         HELING OBJECTS
       </Link>
 
@@ -23,7 +51,7 @@ export const Header = ({isActive, setIsActive}) => {
         }}
       />
 
-    {/* <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
       {isActive && <Nav />}
     </AnimatePresence> */}
     </header>
@@ -44,8 +72,8 @@ const MenuButton = ({ isActive, toggleMenu }) => {
             toggleMenu();
           }}
         >
-          <div className="perspectiveText">
-            <p>Menu</p>
+          <div className="perspectiveText body-text-3">
+            <p>Catalog</p>
           </div>
         </div>
         <div
@@ -54,7 +82,7 @@ const MenuButton = ({ isActive, toggleMenu }) => {
             toggleMenu();
           }}
         >
-          <div className="perspectiveText">
+          <div className="perspectiveText body-text-3">
             <p>Close</p>
           </div>
         </div>
@@ -62,4 +90,3 @@ const MenuButton = ({ isActive, toggleMenu }) => {
     </div>
   );
 };
-

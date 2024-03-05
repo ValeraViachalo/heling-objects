@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import React, { useEffect, useRef, useState } from "react";
 
-import { Home } from "./pages/home/home";
 import { ProductDetailsPage } from "./pages/productDetailsPage/ProductDetailsPage";
 import { Header } from "./components/Header/header";
 import { Nav } from "./components/Header/Nav/Nav";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
+import { Products } from "./pages/Products/Products";
+import Home from "./pages/Home/Home";
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -22,13 +23,17 @@ function App() {
           element: <Home />,
         },
         {
-          path: "products",
+          path: "product",
           children: [
             {
-              path: ":productsId?",
+              path: ":productId?",
               element: <ProductDetailsPage />,
             },
           ],
+        },
+        {
+          path: "products",
+          element: <Products />,
         },
       ],
     },

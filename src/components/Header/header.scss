@@ -5,6 +5,7 @@
   justify-content: space-between;
 
   font-size: 2vw;
+  height: 2vw;
   position: fixed;
   mix-blend-mode: difference;
   color: $c-white-secondary;
@@ -12,11 +13,23 @@
   left: 1vw;
   top: 1vw;
   z-index: 10;
+
+  &__link {
+    transition: all .3s ease;
+    &--active {
+      color: $g-60;
+    }
+  }
 }
 
 .navigation {
   position: relative;
   left: 6vw;
+
+  &__list {
+    display: flex;
+    gap: 2vw;
+  }
 
   &__button {
     cursor: pointer;

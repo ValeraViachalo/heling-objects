@@ -1,7 +1,16 @@
-@import "../../styles/global.scss";
+@import "/src/styles/global.scss";
 
 .home {
-  @include mq($laptop, '>') {
-    margin-top: 4vw;
+  background-color: $g-30;
+  padding: 10vw 2vw;
+
+  .left {
+    p {
+      width: 20%;
+    }
+  }
+
+  .right {
+    
   }
 }

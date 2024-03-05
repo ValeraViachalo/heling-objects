@@ -27,7 +27,7 @@ export const ProductCard = ({ title, link, image, id }) => {
 
   return (
     <div className="product-card" id={`product-card-${id}`}>
-      <Link to={`products/${link}/`} className={`product-card__link`} >
+      <Link to={`/product/${link}/`} className={`product-card__link`} >
         <div
           className="product-card__main-image"
           id={`card-image-${id}`}

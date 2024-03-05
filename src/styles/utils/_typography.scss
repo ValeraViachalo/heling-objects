@@ -15,12 +15,25 @@
   }
 }
 
-%body-text {
-  font-family: RightGrotesk, sans-serif;
-  font-size: 1.5vw;
-  letter-spacing: 0.1vw;
+%h1 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 7vw;
+  letter-spacing: -0.2vw;
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
+
+  @include mq() {
+    font-size: 8vw;
+  }
+}
+
+%body-text {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 1.2vw;
+  // letter-spacing: -0.1vw;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
 
   @include mq() {
     font-size: 4vw;
@@ -29,16 +42,46 @@
 
 %link {
   font-family: FormulaCondensed, sans-serif;
+  font-family: "HelveticaNeueCyr", sans-serif;
   font-size: 2vw;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
   text-transform: uppercase;
-  
+
   @include mq($laptop) {
     font-size: 6vw;
   }
+}
 
+.body-text {
+  &-2 {
+    font-family: FormulaCondensed, sans-serif;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1vw;
+
+    @include mq($laptop) {
+      font-size: 6vw;
+    }
+  }
+  
+  &-3 {
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-size: 1vw;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 0vw;
+
+    @include mq($laptop) {
+      font-size: 6vw;
+    }
+  }
 }
 
 a {
@@ -47,4 +90,8 @@ a {
 
 body {
   @extend %body-text;
+}
+
+h1 {
+  @extend %h1;
 }

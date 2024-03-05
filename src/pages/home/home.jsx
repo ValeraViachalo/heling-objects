@@ -1,38 +1,29 @@
-import { motion } from "framer-motion";
-import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { motionParametr } from "../../helpers/motionParametr";
-import { useEffect, useRef, useState } from "react";
-import { getProducts } from "../../helpers/getProducts";
-import { Footer } from "../../components/Footer/Footer";
+import React from "react";
 
-import './home.scss';
-import { useDocumentTitle } from "../../components/documentTitle/documentTitle";
+import "./Home.scss";
 
-export const Home = () => {
-  const [products, setProducts] = useState([]);
-
-  useDocumentTitle('HELING OBJECTS');
-  
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
-
+export default function Home() {
   return (
-    <motion.section
-      {...motionParametr()}
-      className="home"
-    >
-        {products.map((product, index) => (
-          <ProductCard
-            key={index}
-            id={index}
-            title={product.name}
-            image={product.mainImage.asset.url}
-            link={product.slug.current}
-          />
-        ))}
+    <main className="home">
+      <div className="hero">
+        <div className="left">
+          <h1>“DESIGN IS WITHIN ME.”</h1>
+          <p>Daniel Heilig. Designer, artist, musician.</p>
+        </div>
 
-      <Footer />
-    </motion.section>
+        <div className="right">
+          <img src="/images/Home/hero.jpg" alt="hero" className="hero__image" />
+          <p>
+            Daniel Heilig. A young Hungarian-German designer, charismatic artist
+            and creative cosmopolitan. Born in Budapest, he has half of Europe
+            in his genes. Childhood days in rural Hungary were marked by Soviets
+            and poverty. Before growing up in renewed, modern Germany, to begin
+            again from nothing, a foreigner without a nest. Heilig’s life’s
+            journey, a constant change of worlds. The quest for authenticity,
+            identity and balance forever shapes this virtuoso’s work.
+          </p>
+        </div>
+      </div>
+    </main>
   );
-};
+}
